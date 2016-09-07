@@ -39,7 +39,7 @@ class Rental
   end
 
   def to_hash
-    return {
+    {
       :id => id,
       :price => total_price,
       options: {

@@ -42,15 +42,15 @@ class Rental
   # actions
   def actions
     return [
-      action_who('driver'),
-      action_who('owner'),
-      action_who('insurance'),
-      action_who('assistance'),
-      action_who('drivy')
+      who('driver'),
+      who('owner'),
+      who('insurance'),
+      who('assistance'),
+      who('drivy')
     ]
   end
 
-  def action_who(who)
+  def who(who)
     case who
     when 'driver'
       Action.new('driver','debit', total_price + deductible_reduction_fee)
@@ -68,7 +68,7 @@ class Rental
   end
 
   def to_hash
-    return {
+    {
       :id => id,
       :price => total_price,
       options: {

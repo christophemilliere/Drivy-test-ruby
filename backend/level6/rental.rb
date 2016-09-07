@@ -43,15 +43,15 @@ class Rental
   # actions
   def actions
     return [
-      action_who('driver'),
-      action_who('owner'),
-      action_who('insurance'),
-      action_who('assistance'),
-      action_who('drivy')
+      who('driver'),
+      who('owner'),
+      who('insurance'),
+      who('assistance'),
+      who('drivy')
     ]
   end
 
-  def action_who(who)
+  def who(who)
     case who
     when 'driver'
       Action.new('driver','debit', total_price + deductible_reduction_fee)
@@ -70,11 +70,11 @@ class Rental
 
   def modification_rental(start_date, end_date, distance)
     # actions
-    driver = action_who('driver')
-    owner = action_who('owner')
-    insurance = action_who('insurance')
-    assistance = action_who('assistance')
-    drivy = action_who('drivy')
+    driver = who('driver')
+    owner = who('owner')
+    insurance = who('insurance')
+    assistance = who('assistance')
+    drivy = who('drivy')
 
     # Update
     @start_date = start_date
@@ -83,11 +83,11 @@ class Rental
     @distance = distance
 
     return [
-      driver.different(action_who('driver')),
-      owner.different(action_who('owner')),
-      insurance.different(action_who('insurance')),
-      assistance.different(action_who('assistance')),
-      drivy.different(action_who('drivy'))
+      driver.different(who('driver')),
+      owner.different(who('owner')),
+      insurance.different(who('insurance')),
+      assistance.different(who('assistance')),
+      drivy.different(who('drivy'))
     ]
   end
 
